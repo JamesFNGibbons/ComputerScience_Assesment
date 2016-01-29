@@ -10,27 +10,33 @@ class interface:
     
     def showNewCustomerForm(self):
         print("#"*40)
-        print("New Customer")
+        print("New Employee")
         print("#"*40)
         
         self.newCustomerData = []
         
         try:
-            self.newCustomerData.append(str(input("Enter customers name --> ")))
-            self.newCustomerData.append(int(input("Enter customers phone -->")))
-            self.newCustomerData.apped(str(input("Enter customers email -->")))
-            self.enwCustomerData.append(str(input("Enter customers address -->")))
+            self.newCustomerData.append(str(raw_input("Enter employee's ID -->")))
+            self.newCustomerData.append(str(raw_input("Enter employee's name --> ")))
+            self.newCustomerData.append(str(raw_input("Enter employee's phone -->")))
+            
+            self.type = str(raw_input("Enter employee's Type (AP/FQ) -->"))
+            if(self.type == "AP"):
+                self.newCustomerData.append(str("Apprentice"))
+            elif(self.type == "FQ"):
+                self.newCustomerData.append(str("Fully Qualified"))
+            
         except(TypeError):
             print("Error - Input data must be the correct data type.")
-        
-        return self.enwCustomerData
+    
+    
     
     def showOptions(self):
         print("#"*40)
-        print("Main menue")
+        print("Employee Database")
         print("#"*40)
         
-        print("1) New Customer")
+        print("1) New Employee")
         return self.askQuestion("Enter a selection ID --> ")
 
 class main:
@@ -40,9 +46,20 @@ class main:
         
         if(menuSelection == 1):
             print("Valid!")
+            self.addNewCustomer()
+            print("You have entered: ");
+            print("ID) " + self.interface.newCustomerData[0])
+            print("Name) " + self.interface.newCustomerData[1])
+            print("Phone) " + self.interface.newCustomerData[2])
+            print("Type) " + self.interface.newCustomerData[3])
+            
+            if(bool(input("Is this info correct? (True/False) "))):
+                self.interface.showOptions()
+            else:
+                self.interface.showNewCustomerForm()
     
     def addNewCustomer(self):
-        self.newCustomerData = self.interface.
+        self.newCustomerData = self.interface.showNewCustomerForm()
             
 
 def initScript():
